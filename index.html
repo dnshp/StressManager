@@ -1,18 +1,26 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<title>Stress Manager</title>
+	<title>Happy Death</title>
 </head>
 <body>
 	<div id="title">
-		Student Stress Manager
-	</div>
-	<div id="message">
-		Hello!
+		Happy Death
 	</div>
 	<div id="mind">
-		What's on your mind?
+		Hello! Today is
+		<script>
+		  var currentDate = new Date(),
+		      day = currentDate.getDate(),
+		      month = currentDate.getMonth() + 1,
+		      year = currentDate.getFullYear();
+		  document.write(month + "/" + day + "/" + year)
+		</script>. How are you feeling?
+	</div>
+	<div id="message">
+		Note: For best results, please write more than 1-2 sentences.
 	</div>
 	<div id="entry">
 		<textarea id="box">Type here...</textarea>

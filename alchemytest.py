@@ -15,7 +15,7 @@ def get_emotion(userMessage):
 		emotionsDict[i] = float(emotionsDict[i])
 	return max(emotionsDict, key=emotionsDict.get), 1 - emotionsDict['joy']
 
-def get_all_keywords(userMessage):
+def get_all_keywords(userMessage)s:
 	dataDump = json.loads(json.dumps(alchemy_language.keywords(text=userMessage), indent=2))['keywords']
 	keywords = []
 	for i in range(len(dataDump)):
