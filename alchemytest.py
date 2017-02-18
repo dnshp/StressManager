@@ -3,7 +3,6 @@ import os
 import csv
 from os.path import join, dirname
 from watson_developer_cloud import AlchemyLanguageV1
-from textblob import TextBlob
 
 alchemy_language = AlchemyLanguageV1(api_key="521aadb81fb565335229d278046fc068a6cb319c")
 
