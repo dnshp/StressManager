@@ -1,11 +1,12 @@
-Blessings,2
-general Welfare,2
-People,2
-domestic Tranquility,2
-United States,2
-perfect Union,2
-Constitution,2
-common defence,2
-Justice,2
-Liberty,2
-Posterity,2
+common defence,3
+nap,1
+Posterity,3
+United States,3
+perfect Union,3
+Justice,3
+general Welfare,3
+People,3
+domestic Tranquility,3
+Blessings,3
+Liberty,3
+Constitution,3
