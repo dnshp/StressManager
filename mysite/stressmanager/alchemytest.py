@@ -86,4 +86,4 @@ def edge_cases(message):
 	forbidden_words=["cut myself", "jump off a cliff", "lethal injection", "self-slaughter", "commit suicide", "kill myself", "life is pointless", "i am worthless"]
 	return any([w in message.lower() for w in forbidden_words])
 
-check_in(userInput, "history.txt")
+#check_in(userInput, "history.txt")
