@@ -15,10 +15,19 @@
 		What's on your mind?
 	</div>
 	<div id="entry">
-		<textarea id="box"></textarea>
+		<form action="request_page" method="get">
+			<textarea id="box" name="mytextarea"></textarea>
+			<!--input type="text" id="box" value="your text here" name="mytextarea" size="255"/-->
+			<p>
+			<input type="submit" class="btn blue" value="Next" name="mybtn">
+		</form>
 	</div>
-	<div id="submit">
-		<a href="#" class="btn blue">Next</a>
-	</div>
+	<!--<form action="#" method="get">
+		<input type="text" value="8" name="mytextbox" size="1"/>
+		<input type="submit" class="btn" value="Click" name="mybtn">
+	</form> -->
 </body>
 </html>
+
+<!--<textarea id="box"></textarea>
+<a href="#" class="btn blue">Next</a> -->
