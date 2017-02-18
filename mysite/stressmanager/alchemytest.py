@@ -41,7 +41,6 @@ def load_history(histFile):
 	return historyDict
 
 def write_history(history, histFile):
-	print("Writing")
 	os.remove(histFile)
 	with open(histFile, "w") as csvfile:
 		csvwriter = csv.writer(csvfile)
