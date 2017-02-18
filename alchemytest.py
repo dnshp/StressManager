@@ -23,9 +23,9 @@ def get_all_keywords(userMessage):
 	return keywords
 
 def check_in(message):
-	#dominantEmotion, stressRating = get_emotion(message)
-	#keywords = get_all_keywords(message)
-	dominantEmotion, keywords, stressRating = "joy", ["a"], 0.34
+	dominantEmotion, stressRating = get_emotion(message)
+	keywords = get_all_keywords(message)
+	#dominantEmotion, keywords, stressRating = "joy", ["a"], 0.34
 	if stressRating > STRESS_THRESHOLD:
 		# Do thing about suicide prevention here
 		suicide_prevention(keywords)
@@ -52,7 +52,6 @@ def write_history(history):
 
 def update_history(message, keywords):
 	historyDict = load_history()
-	print(historyDict)
 	for k in keywords:
 		if k not in historyDict:
 			historyDict[k] = 0
@@ -72,4 +71,4 @@ def stress_relief():
 def suicide_prevention(keywords):
 	return keywords
 
-print(check_in("joy"))
+check_in(userInput)

@@ -1,4 +1,11 @@
-a,7
-y,6
-c,3
-b,4
+Blessings,2
+general Welfare,2
+People,2
+domestic Tranquility,2
+United States,2
+perfect Union,2
+Constitution,2
+common defence,2
+Justice,2
+Liberty,2
+Posterity,2
