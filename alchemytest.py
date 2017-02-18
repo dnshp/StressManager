@@ -9,7 +9,9 @@ userInput = "We the People of the United States, in Order to form a more perfect
 #combined_operations = ['page-image', 'entity', 'keyword', 'title', 'author', 'taxonomy', 'concept', 'doc-emotion']
 
 def getEmotion(userMood):
-	dataDump = json.loads(json.dumps(alchemy_language.emotion(text=userInput), indent=2))
-	return type(dataDump)
+	emotionsDict = json.loads(json.dumps(alchemy_language.emotion(text=userInput), indent=2))['docEmotions']
+	for i in emotionsDict:
+		emotionsDict[i] = float(emotionsDict[i])
+	return max(emotionsDict, key=emotionsDict.get)
 
 print(getEmotion("I saw a cute dog today"))
