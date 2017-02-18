@@ -9,32 +9,33 @@ STRESS_THRESHOLD = 0.9
 
 userInput = "We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America."
 
-def getEmotion(userMessage):
+def get_emotion(userMessage):
 	emotionsDict = json.loads(json.dumps(alchemy_language.emotion(text=userMessage), indent=2))['docEmotions']
 	for i in emotionsDict:
 		emotionsDict[i] = float(emotionsDict[i])
 	return max(emotionsDict, key=emotionsDict.get), 1 - emotionsDict['joy']
 
-def getAllKeywords(userMessage):
+def get_all_keywords(userMessage):
 	dataDump = json.loads(json.dumps(alchemy_language.keywords(text=userMessage), indent=2))['keywords']
 	keywords = []
 	for i in range(len(dataDump)):
 		keywords.append(dataDump[i]['text'])
 	return keywords
 
-def checkIn(message):
-	dominantEmotion, stressRating = getEmotion(message)
-	keywords = getAllKeywords(message)
-	#dominantEmotion, keywords, stressRating = "anger", ["a"], 0.34
+def check_in(message):
+	#dominantEmotion, stressRating = get_emotion(message)
+	#keywords = get_all_keywords(message)
+	dominantEmotion, keywords, stressRating = "joy", ["a"], 0.34
 	if stressRating > STRESS_THRESHOLD:
 		# Do thing about suicide prevention here
+		suicide_prevention(keywords)
 		return
 	if dominantEmotion == "joy":
-		updateHistory(message)
+		update_history(message, keywords)
 	else:
-		return stressRelief()
+		return stress_relief()
 
-def loadHistory():
+def load_history():
 	historyDict = {}
 	with open("history.txt", "r") as csvfile:
 		csvreader = csv.reader(csvfile, delimiter=',')
@@ -42,24 +43,25 @@ def loadHistory():
 			historyDict[line[0]] = line[1]
 	return historyDict
 
-def writeHistory(history):
+def write_history(history):
 	os.remove("history.txt")
 	with open("history.txt", "w") as csvfile:
 		csvwriter = csv.writer(csvfile)
 		for i in history:
-			csvwriter.writerow([i, historyDict[i]])
+			csvwriter.writerow([i, history[i]])
 
-def updateHistory(message):
-	historyDict = loadHistory()
+def update_history(message, keywords):
+	historyDict = load_history()
+	print(historyDict)
 	for k in keywords:
 		if k not in historyDict:
 			historyDict[k] = 0
 		historyDict[k] = int(historyDict[k]) + 1
-	writeHistory(historyDict)
+	write_history(historyDict)
 	return historyDict
 
-def stressRelief():
-	historyDict = loadHistory()
+def stress_relief():
+	historyDict = load_history()
 	suggestions = []
 	for i in range(3):
 		rmkey = max(historyDict, key=historyDict.get)
@@ -67,4 +69,7 @@ def stressRelief():
 		historyDict.pop(rmkey)
 	return suggestions
 
-#print(checkIn("joy", ["a","b"]))
+def suicide_prevention(keywords):
+	return keywords
+
+print(check_in("joy"))
