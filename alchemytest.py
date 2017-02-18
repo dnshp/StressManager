@@ -28,28 +28,43 @@ def getAllKeywords(userMessage):
 
 def checkIn(mood, message):
 	dominantEmotion, keywords = getEmotion(mood), getAllKeywords(message)
-	#dominantEmotion, keywords = "joy", ["a"]
+	#dominantEmotion, keywords = "anger", ["a"]
 	if dominantEmotion == "joy":
 		updateHistory(mood, message)
 	else:
-		# Suggest stress relievers
-		return
+		return stressRelief()
+
+def loadHistory():
+	historyDict = {}
+	with open("history.txt", "r") as csvfile:
+		csvreader = csv.reader(csvfile, delimiter=',')
+		for line in csvreader:
+			historyDict[line[0]] = line[1]
+	return historyDict
+
+def writeHistory(history):
+	os.remove("history.txt")
+	with open("history.txt", "w") as csvfile:
+		csvwriter = csv.writer(csvfile)
+		for i in history:
+			csvwriter.writerow([i, historyDict[i]])
 
 def updateHistory(mood, message):
-		historyDict = {}
-		with open("history.txt", "r") as csvfile:
-			csvreader = csv.reader(csvfile, delimiter=',')
-			for line in csvreader:
-				historyDict[line[0]] = line[1]
-		for k in keywords:
-			if k not in historyDict:
-				historyDict[k] = 0
-			historyDict[k] = int(historyDict[k]) + 1
-		print(historyDict)
-		os.remove("history.txt")
-		with open("history.txt", "w") as csvfile:
-			csvwriter = csv.writer(csvfile)
-			for i in historyDict:
-				csvwriter.writerow([i, historyDict[i]])
+	historyDict = loadHistory()
+	for k in keywords:
+		if k not in historyDict:
+			historyDict[k] = 0
+		historyDict[k] = int(historyDict[k]) + 1
+	writeHistory(historyDict)
+	return historyDict
 
-updateHistory("I saw a cute dog today", userInput)
+def stressRelief():
+	historyDict = loadHistory()
+	suggestions = []
+	for i in range(3):
+		rmkey = max(historyDict, key=historyDict.get)
+		suggestions.append(rmkey)
+		historyDict.pop(rmkey)
+	return suggestions
+
+#print(checkIn("joy", ["a","b"]))
