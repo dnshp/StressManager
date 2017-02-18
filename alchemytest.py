@@ -26,10 +26,16 @@ def getAllKeywords(userMessage):
 		keywords.append(dataDump[i]['text'])
 	return keywords
 
-def updateHistory(mood, message):
+def checkIn(mood, message):
 	dominantEmotion, keywords = getEmotion(mood), getAllKeywords(message)
 	#dominantEmotion, keywords = "joy", ["a"]
 	if dominantEmotion == "joy":
+		updateHistory(mood, message)
+	else:
+		# Suggest stress relievers
+		return
+
+def updateHistory(mood, message):
 		historyDict = {}
 		with open("history.txt", "r") as csvfile:
 			csvreader = csv.reader(csvfile, delimiter=',')
