@@ -1,6 +1,7 @@
 import json
 from os.path import join, dirname
 from watson_developer_cloud import AlchemyLanguageV1
+from textblob import TextBlob
 
 alchemy_language = AlchemyLanguageV1(api_key="521aadb81fb565335229d278046fc068a6cb319c")
 
@@ -16,11 +17,11 @@ def getEmotion(userMood):
 
 #print(getEmotion("I saw a cute dog today"))
 
-def getNKeywords(userMessage, n):
+def getAllKeywords(userMessage):
 	dataDump = json.loads(json.dumps(alchemy_language.keywords(text=userMessage), indent=2))['keywords']
 	keywords = []
-	for i in range(n):
+	for i in range(len(dataDump)):
 		keywords.append(dataDump[i]['text'])
 	return keywords
 
-#print(getNKeywords(userInput, 3))
+print(getAllKeywords(userInput))
