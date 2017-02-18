@@ -1,4 +1,6 @@
 import json
+import os
+import csv
 from os.path import join, dirname
 from watson_developer_cloud import AlchemyLanguageV1
 from textblob import TextBlob
@@ -24,4 +26,24 @@ def getAllKeywords(userMessage):
 		keywords.append(dataDump[i]['text'])
 	return keywords
 
-print(getAllKeywords(userInput))
+def updateHistory(mood, message):
+	dominantEmotion, keywords = getEmotion(mood), getAllKeywords(message)
+	#dominantEmotion, keywords = "joy", ["a"]
+	if dominantEmotion == "joy":
+		historyDict = {}
+		with open("history.txt", "r") as csvfile:
+			csvreader = csv.reader(csvfile, delimiter=',')
+			for line in csvreader:
+				historyDict[line[0]] = line[1]
+		for k in keywords:
+			if k not in historyDict:
+				historyDict[k] = 0
+			historyDict[k] = int(historyDict[k]) + 1
+		print(historyDict)
+		os.remove("history.txt")
+		with open("history.txt", "w") as csvfile:
+			csvwriter = csv.writer(csvfile)
+			for i in historyDict:
+				csvwriter.writerow([i, historyDict[i]])
+
+updateHistory("I saw a cute dog today", userInput)
