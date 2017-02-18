@@ -14,4 +14,13 @@ def getEmotion(userMood):
 		emotionsDict[i] = float(emotionsDict[i])
 	return max(emotionsDict, key=emotionsDict.get)
 
-print(getEmotion("I saw a cute dog today"))
+#print(getEmotion("I saw a cute dog today"))
+
+def getNKeywords(userMessage, n):
+	dataDump = json.loads(json.dumps(alchemy_language.keywords(text=userMessage), indent=2))['keywords']
+	keywords = []
+	for i in range(n):
+		keywords.append(dataDump[i]['text'])
+	return keywords
+
+#print(getNKeywords(userInput, 3))
