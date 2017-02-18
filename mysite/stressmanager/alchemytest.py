@@ -25,7 +25,6 @@ def get_all_keywords(userMessage):
 def check_in(message, histFile):
 	dominantEmotion, stressRating = get_emotion(message)
 	keywords = get_all_keywords(message)
-	print(stressRating)
 	if stressRating > STRESS_THRESHOLD or edge_cases(message):
 		return suicide_prevention()
 	if dominantEmotion == "joy":
@@ -42,6 +41,7 @@ def load_history(histFile):
 	return historyDict
 
 def write_history(history, histFile):
+	print("Writing")
 	os.remove(histFile)
 	with open(histFile, "w") as csvfile:
 		csvwriter = csv.writer(csvfile)
@@ -58,7 +58,7 @@ def update_history(message, keywords, histFile):
 	return "Your response has been logged. Have a nice day! :)"
 
 def stress_relief():
-	historyDict = dict_items_to_ints(load_history())
+	historyDict = dict_items_to_ints(load_history("history.txt"))
 	suggestions = []
 	if len(historyDict) < 3:
 		return "In general, people find it helpful to meditate, rest, or interact with others when they are stressed. Do not be afraid to speak to professors and ask for any support that you may need."
