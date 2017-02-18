@@ -9,8 +9,8 @@ STRESS_THRESHOLD = 0.9
 
 userInput = "We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America."
 
-def getEmotion(userMood):
-	emotionsDict = json.loads(json.dumps(alchemy_language.emotion(text=userInput), indent=2))['docEmotions']
+def getEmotion(userMessage):
+	emotionsDict = json.loads(json.dumps(alchemy_language.emotion(text=userMessage), indent=2))['docEmotions']
 	for i in emotionsDict:
 		emotionsDict[i] = float(emotionsDict[i])
 	return max(emotionsDict, key=emotionsDict.get), 1 - emotionsDict['joy']
@@ -22,15 +22,15 @@ def getAllKeywords(userMessage):
 		keywords.append(dataDump[i]['text'])
 	return keywords
 
-def checkIn(mood, message):
-	dominantEmotion, stressRating = getEmotion(mood)
+def checkIn(message):
+	dominantEmotion, stressRating = getEmotion(message)
 	keywords = getAllKeywords(message)
 	#dominantEmotion, keywords, stressRating = "anger", ["a"], 0.34
 	if stressRating > STRESS_THRESHOLD:
 		# Do thing about suicide prevention here
 		return
 	if dominantEmotion == "joy":
-		updateHistory(mood, message)
+		updateHistory(message)
 	else:
 		return stressRelief()
 
@@ -49,7 +49,7 @@ def writeHistory(history):
 		for i in history:
 			csvwriter.writerow([i, historyDict[i]])
 
-def updateHistory(mood, message):
+def updateHistory(message):
 	historyDict = loadHistory()
 	for k in keywords:
 		if k not in historyDict:
