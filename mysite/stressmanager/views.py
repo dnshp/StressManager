@@ -9,7 +9,6 @@ def index(request):
 	return HttpResponse(render(request, 'input.html', context))
 
 def request_page(request):
-	print("CLICK!")
 	userInput = request.GET.get('mytextarea')
 	context = {'newMessage' : check_in(userInput, 'history.txt'), 'STATIC_URL' : "/static/style.css"}
 	return HttpResponse(render(request, 'thanks.html', context))
