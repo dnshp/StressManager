@@ -75,6 +75,7 @@ def update_history(message, keywords, histFile, user):
 
 def stress_relief(user):
 	historyDict = dict_items_to_ints(load_history("history.txt", user))
+	write_history(historyDict, "history.txt", user)
 	suggestions = []
 	if len(historyDict) < 3:
 		return "In general, people find it helpful to meditate, rest, or interact with others when they are stressed. Do not be afraid to speak to professors and ask for any support that you may need."
