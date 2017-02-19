@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href=mysite/static/css/style.css>
+	<title>Stress Less</title>
+</head>
+<body>
+	<div>
+		<ul class="navbar" id="outputbar">
+		  <li><a href="index.html">Home</a></li>
+		  <li><a href="output.html">Output</a></li>
+		  <li><a href="login.html">Log Out</a></li>
+		</ul>
+	</div>
+	<div id="title">
+		Stress Less
+	</div>
+	<div id="mind">
+		Hello! Today is
+		<script>
+		  var currentDate = new Date(),
+		      day = currentDate.getDate(),
+		      month = currentDate.getMonth() + 1,
+		      year = currentDate.getFullYear();
+		  document.write(month + "/" + day + "/" + year)
+		</script>. How are you feeling?
+	</div>
+	<div id="message">
+		Note: For best results, write about than 1-2 sentences describing one thing about your day.<br>You may talk about multiple events in separate submissions.<br>Take the time to reflect on your day.
+	</div>
+	<div id="entry">
+		<form action="request_page" method="get">
+			<textarea id="box" name="mytextarea">Type here...</textarea>
+			<br><br>
+			<input type="submit" class="btn blue" value="Next >" name="mybtn">
+		</form>
+	</div>
+</body>
+</html>

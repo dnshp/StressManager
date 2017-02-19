@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href=mysite/static/css/style.css>
+	<title>Stress Less</title>
+</head>
+<body>
+	<div>
+		<ul class="navbar" id="outputbar">
+		  <li><a href="index.html">Home</a></li>
+		  <li><a href="output.html">Output</a></li>
+		  <li><a href="login.html">Log Out</a></li>
+		</ul>
+	</div>
+	<div id="title">
+		Stress Less
+	</div>
+	<div id="mind">
+		{{ newMessage }}
+	</div>
+	<div id="message"></div>
+	<div id="entry">
+		<form action="index" method="get">
+			<textarea id="box" name="mytextarea"></textarea>
+			<br><br>
+			<input type="submit" class="btn blue" value="< Anything else?" name="mybtn2">
+		</form>
+	</div>
+</body>
+</html>
