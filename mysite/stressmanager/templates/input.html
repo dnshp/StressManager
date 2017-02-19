@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href= {{ STATIC_URL }}>
+	<link rel="stylesheet" type="text/css" href={{ STATIC_URL }}>
 	<title>Stress Less</title>
 </head>
 <body>
@@ -13,7 +13,7 @@
 		</ul>
 	</div>
 	<div id="title">
-		Stress Less
+		Stress Manager
 	</div>
 	<div id="mind">
 		Hello! Today is
@@ -26,11 +26,11 @@
 		</script>. How are you feeling?
 	</div>
 	<div id="message">
-		Note: For best results, write about than 1-2 sentences describing one thing about your day.<br>You may talk about multiple events in separate submissions.<br>Take the time to reflect on your day.
+		Note: For best results, write about 1-2 sentences describing <br> one event about your day, and submit multiple times for separate events.
 	</div>
 	<div id="entry">
 		<form action="request_page" method="get">
-			<textarea id="box" name="mytextarea">Type here...</textarea>
+			<textarea id="box" name="mytextarea" placeholder="Type here..."></textarea>
 			<br><br>
 			<input type="submit" class="btn blue" value="Next >" name="mybtn">
 		</form>
