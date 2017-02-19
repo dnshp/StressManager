@@ -16,8 +16,8 @@ body {
 #message {
     text-align: center;
     font-family: 'Hind Madurai';
-    font-size:  20px;
-    font-weight:  bold;
+    font-size:  15px;
+    font-weight:  normal;;
     color: #A3D5FF;
 }
 
@@ -45,6 +45,21 @@ body {
     padding: 5px;
     border: 5px solid #F7F7F7;
     resize: none;
+}
+
+
+#form {
+  background: #F7F7F7;
+  font-size: 15px;
+  color: #29657a;
+  height: 20px;
+  width: 200px;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+  border-radius: 15px 15px 15px 15px;
+  padding: 10px;
+  border: 5px solid #D9F0FF;
+  resize: none;
+
 }
 
 #submit {

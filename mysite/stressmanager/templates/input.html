@@ -2,22 +2,29 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href= {{ STATIC_URL }}>
-	<title>Stress Manager</title>
+	<title>Stress Less</title>
 </head>
 <body>
 	<div id="title">
-		Student Stress Manager
-	</div>
-	<div id="message">
-		Hello!
+		Stress Less
 	</div>
 	<div id="mind">
-		What's on your mind?
+		Hello! Today is
+		<script>
+		  var currentDate = new Date(),
+		      day = currentDate.getDate(),
+		      month = currentDate.getMonth() + 1,
+		      year = currentDate.getFullYear();
+		  document.write(month + "/" + day + "/" + year)
+		</script>. How are you feeling?
+	</div>
+	<div id="message">
+		Note: For best results, please write more than 1-2 sentences. Take the time to reflect on your day.
 	</div>
 	<div id="entry">
 		<form action="request_page" method="get">
 			<textarea id="box" name="mytextarea"></textarea>
-			<p>
+			<br><br>
 			<input type="submit" class="btn blue" value="Next" name="mybtn">
 		</form>
 	</div>
