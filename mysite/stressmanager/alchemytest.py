@@ -66,8 +66,9 @@ def stress_relief():
 		suggestions.append(rmkey)
 		historyDict.pop(rmkey)
 	rv = "According to your recent logs, the following things tend to make you feel better: "
-	for entry in suggestions:
-		rv += "\n" + entry
+	for i in range(len(suggestions) - 1):
+		rv += suggestions[i] + ", "
+	rv += suggestions[-1]
 	return rv
 
 def suicide_prevention():

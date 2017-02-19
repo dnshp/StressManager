@@ -1,23 +1,92 @@
 @import url('https://fonts.googleapis.com/css?family=Ek+Mukta|Hind+Madurai|Roboto');
 
 body {
-    background-color: #F7F7F7;
+    background-color: #f0f4fb;
 }
+
+.entry {
+    margin-top: 20px;
+    text-align: center;
+    padding: 5px;
+}
+
+#username {
+    margin-top: 20px;
+    text-align: center;
+    padding: 5px;
+}
+
+#password {
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 5px;
+}
+
+#form {
+    margin-top: 20;
+    background: #F7F7F7;
+    font-size: 15px;
+    color: #29657a;
+    height: 20px;
+    width: 200px;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    border-radius: 10px 10px 10px 10px;
+    padding: 15px;
+    border: 5px solid #D9F0FF;
+    resize: none;
+}
+
+/* Remove margins and padding from the list, and add a black background color */
+.navbar {
+    list-style-type: none;
+    font-family: 'Hind Madurai';
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Float the list items side by side */
+.navbar li {float: left;}
+
+/* Style the links inside the list items */
+.navbar li a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+    color: #83C9F4
+}
+
+/* Change background color of links on hover */
+.navbar li a:hover {
+  background-color: #83C9F4;
+  color: white;
+}
+
+/* Hide the list item that contains the link that should open and close the topnav on small screens */
+.navbar li.icon {
+  display: none;
+}
+
 #title {
-    padding-top: 20px;
+    padding-top: 15px;
     text-align: center;
     font-family: 'Hind Madurai';
     font-size:  4em;
     font-weight:  bold;
     color: #000000;
-    margin-bottom:  0.50em;
+    margin-bottom: 15px;
 }
 
 #message {
+    margin-top: 10px;
     text-align: center;
     font-family: 'Hind Madurai';
-    font-size:  15px;
-    font-weight:  normal;;
+    font-size:  20px;
+    font-weight:  bold;
     color: #A3D5FF;
 }
 
@@ -29,7 +98,7 @@ body {
     color: #000000;
 }
 
-#entry {
+.textbox {
     text-align: center;
     margin-top: 30px;
 }
@@ -47,22 +116,7 @@ body {
     resize: none;
 }
 
-
-#form {
-  background: #F7F7F7;
-  font-size: 15px;
-  color: #29657a;
-  height: 20px;
-  width: 200px;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.2);
-  border-radius: 15px 15px 15px 15px;
-  padding: 10px;
-  border: 5px solid #D9F0FF;
-  resize: none;
-
-}
-
-#submit {
+.submit {
     text-align: center;
     padding-top: 30px;
 }
@@ -73,7 +127,7 @@ body {
   padding: 15px 40px;
   font-size: 22px;
   text-decoration: none;
-  margin: 20px;
+  margin: 10px;
   color: #F7F7F7;
   position: relative;
   display: inline-block;
