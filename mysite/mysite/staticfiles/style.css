@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Ek+Mukta|Hind+Madurai|Roboto');
 
 body {
-    background-color: #f0f4fb;
+    background-color: #F7F7F7;
 }
 
 .entry {
     margin-top: 20px;
     text-align: center;
-    margin: 0 auto;
+    padding: 5px;
 }
 
 #username {
@@ -23,15 +23,16 @@ body {
 }
 
 #form {
-    margin-top: 20;
+    margin-top: 20px;
     background: #F7F7F7;
     font-size: 15px;
+    line-height: 15px;
     color: #29657a;
-    height: 20px;
+    height: 19px;
     width: 200px;
     text-shadow: 0 1px 0 rgba(255,255,255,0.2);
     border-radius: 10px 10px 10px 10px;
-    padding: 15px;
+    padding: 20px;
     border: 5px solid #D9F0FF;
     resize: none;
 }
@@ -64,6 +65,8 @@ body {
 .navbar li a:hover {
   background-color: #83C9F4;
   color: white;
+  border-radius: 5px;
+
 }
 
 /* Hide the list item that contains the link that should open and close the topnav on small screens */
@@ -85,10 +88,9 @@ body {
     margin-top: 10px;
     text-align: center;
     font-family: 'Hind Madurai';
-    font-size:  15px;
+    font-size:  20px;
     font-weight:  bold;
     color: #A3D5FF;
-    margin-bottom:20px;
 }
 
 #mind {
@@ -99,16 +101,26 @@ body {
     color: #000000;
 }
 
+#about {
+  margin-top: 10px;
+  text-align: center;
+  font-family: 'Hind Madurai';
+  font-size:  13px;
+  font-weight:  normal;;
+  color: #000000;
+}
+
 .textbox {
     text-align: center;
     margin-top: 30px;
 }
 
 #box {
+    margin-top: 20px;
     background: #F7F7F7;
     font-size: 20px;
     color: #29657a;
-    height: 300px;
+    height: 150px;
     width: 700px;
     text-shadow: 0 1px 0 rgba(255,255,255,0.2);
     border-radius: 15px 15px 15px 15px;
@@ -125,19 +137,20 @@ body {
 .btn {
   font-family: 'Hind Madurai';
   border-radius: 5px;
-  padding: 15px 40px;
+  padding: 12px 40px;
   font-size: 22px;
   text-decoration: none;
-  margin: 0 auto;
+  margin: 10px;
   color: #F7F7F7;
   position: relative;
   display: inline-block;
+  border: none;
 }
 
 .btn:active {
   transform: translate(0px, 5px);
   -webkit-transform: translate(0px, 2px);
-  box-shadow: 0px 1px 0px 0px;
+  /**box-shadow: 0px 1px 0px 0px;**/
 }
 
 .blue {
@@ -151,5 +164,5 @@ body {
 }
 
 form {
-  text-align: center;
+  text-align: center
 }

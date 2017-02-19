@@ -100,7 +100,7 @@ def dict_items_to_ints(dct):
 
 def edge_cases(message):
 	#Filters message for edge cases that would result in Extreme case
-	forbidden_words=["cut myself", "jump off a cliff", "lethal injection", "self-slaughter", "commit suicide", "kill myself", "life is pointless", "i am worthless"]
+	forbidden_words=["cut myself", "jump off a cliff", "lethal injection", "self-slaughter", "commit suicide", "kill myself", "pointless", "worthless", "meaningless"]
 	return any([w in message.lower() for w in forbidden_words])
 
 #check_in(userInput, "history.txt")
