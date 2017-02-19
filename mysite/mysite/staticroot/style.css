@@ -7,6 +7,7 @@ body {
 .entry {
     margin-top: 20px;
     text-align: center;
+    margin: 0 auto;
 }
 
 #username {
@@ -87,6 +88,7 @@ body {
     font-size:  15px;
     font-weight:  bold;
     color: #A3D5FF;
+    margin-bottom:20px;
 }
 
 #mind {
@@ -149,5 +151,5 @@ body {
 }
 
 form {
-
+  text-align: center;
 }
