@@ -1,6 +1,0 @@
-sunny weather,1
-Martian,1
-night,1
-good sandwich,1
-volleyball game,1
-juice,1

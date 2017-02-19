@@ -22,42 +22,59 @@ def get_all_keywords(userMessage):
 		keywords.append(dataDump[i]['text'])
 	return keywords
 
-def check_in(message, histFile):
+def check_in(message, histFile, user):
 	dominantEmotion, stressRating = get_emotion(message)
 	keywords = get_all_keywords(message)
-	if stressRating > STRESS_THRESHOLD or edge_cases(message):
+	if edge_cases(message):
 		return suicide_prevention()
 	if dominantEmotion == "joy":
-		return update_history(message, keywords, histFile)
+		return update_history(message, keywords, histFile, user)
 	else:
-		return stress_relief()
+		return stress_relief(user)
 
-def load_history(histFile):
+def load_history(histFile, user):
 	historyDict = {}
+	others = []
 	with open(histFile, "r") as csvfile:
-		csvreader = csv.reader(csvfile, delimiter=',')
+		csvreader = csv.reader(csvfile)
 		for line in csvreader:
-			historyDict[line[0]] = line[1]
-	return historyDict
-
-def write_history(history, histFile):
-	os.remove(histFile)
+			if line[0] == user:
+				historyDict[line[1]] = line[2]
+			else:
+				others.append([line[0], line[1], line[2]])
 	with open(histFile, "w") as csvfile:
 		csvwriter = csv.writer(csvfile)
-		for i in history:
-			csvwriter.writerow([i, history[i]])
+		for i in others:
+			csvwriter.writerow(i)
+	return historyDict
 
-def update_history(message, keywords, histFile):
-	historyDict = load_history(histFile)
+def write_history(history, histFile, user):
+	others = []
+	with open(histFile, "r") as csvfile:
+		csvreader = csv.reader(csvfile)
+		for line in csvreader:
+			print(line)
+			print(type(line))
+			others.append(line)
+	os.remove(histFile)
+	with open(histFile, "w+") as csvfile:
+		csvwriter = csv.writer(csvfile)
+		for i in history:
+			csvwriter.writerow([user, i, history[i]])
+		for j in others:
+			csvwriter.writerow(j)
+
+def update_history(message, keywords, histFile, user):
+	historyDict = load_history(histFile, user)
 	for k in keywords:
 		if k not in historyDict:
 			historyDict[k] = 0
 		historyDict[k] = int(historyDict[k]) + 1
-	write_history(historyDict, histFile)
+	write_history(historyDict, histFile, user)
 	return "Your response has been logged. Have a nice day! :)"
 
-def stress_relief():
-	historyDict = dict_items_to_ints(load_history("history.txt"))
+def stress_relief(user):
+	historyDict = dict_items_to_ints(load_history("history.txt", user))
 	suggestions = []
 	if len(historyDict) < 3:
 		return "In general, people find it helpful to meditate, rest, or interact with others when they are stressed. Do not be afraid to speak to professors and ask for any support that you may need."

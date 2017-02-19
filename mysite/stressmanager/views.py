@@ -10,5 +10,6 @@ def index(request):
 
 def request_page(request):
 	userInput = request.GET.get('mytextarea')
-	context = {'newMessage' : check_in(userInput, 'history.txt'), 'STATIC_URL' : "/static/style.css"}
+	userName = request.GET.get('username')
+	context = {'newMessage' : check_in(userInput, 'history.txt', userName), 'STATIC_URL' : "/static/style.css"}
 	return HttpResponse(render(request, 'thanks.html', context))
